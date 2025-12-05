@@ -21,6 +21,7 @@ TO DO :
 
 Idées : 
 -> d'abord choisir la case avec un tuple (x,y) ; (changer affichade de la case en question par une croix ?) puis entrer la valeur. 
+-> Ajouter annuler sélection case
 
 
 Problèmes rencontrés : 
