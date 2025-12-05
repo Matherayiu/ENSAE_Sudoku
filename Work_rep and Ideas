@@ -1,0 +1,28 @@
+Sudoku. Ici l’utilisateur aura `a sa disposition une collection pr´e-d´efinie de
+`
+grilles (en prendre sur Internet) et pourra en choisir une.
+A tout moment
+l’utilisateur pourra demander de l’aide et la machine lui placera une valeur
+correcte sur l’une des cases non d´ej`a occup´ees de la grille. L’affichage graphique
+pourra se faire `a travers une biblioth`eque graphique ou via la console.
+
+FAIT : 
+-> AFFICHAGE Grille 
+-> Grille prédéfinies 
+-> grilles corrigées
+
+TO DO : 
+-> Ajouter classe grille  => Théophie
+-> Possibilité modifier la grille => Théophile
+-> Demander de l'aide => G and A
+     -> vérifier que tout est bon 
+     -> demander de remplir une case  
+
+
+Idées : 
+-> d'abord choisir la case avec un tuple (x,y) ; (changer affichade de la case en question par une croix ?) puis entrer la valeur. 
+
+
+Problèmes rencontrés : 
+
+ 
