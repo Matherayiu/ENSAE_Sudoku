@@ -1,4 +1,4 @@
-//Ce que mon code fait : 3 grilles trouvées sur internet, l'utilisateur en choisit une, la grille va s'afficher sur la console//
+//Ce que notre code fait : 3 grilles trouvées sur internet, l'utilisateur en choisit une, la grille va s'afficher sur la console//
 
 #include <iostream>
 using namespace std;
