@@ -46,6 +46,20 @@ int grille3[9][9] = {
     {0,0,0, 0,0,0, 0,0,0}
 };
 
+int grille4[9][9] = {
+    {1,0,0, 0,0,7, 0,9,0},
+    {0,3,0, 0,2,0, 0,0,8},
+    {0,0,9, 6,0,0, 5,0,0},
+
+    {0,0,5, 3,0,0, 9,0,0},
+    {0,1,0, 0,8,0, 0,0,2},
+    {6,0,0, 0,0,4, 0,0,0},
+
+    {3,0,0, 0,0,0, 0,1,0},
+    {0,4,0, 4,1,0, 0,0,7},
+    {0,0,7, 0,0,0, 3,0,0}
+};
+
 void afficherGrille(int g[9][9]) {
     cout << " -----------------------" << endl;
     for (int i = 0; i < 9; i++) {
@@ -74,6 +88,7 @@ int main() {
     cout << "1 - Grille 1" << endl;
     cout << "2 - Grille 2" << endl;
     cout << "3 - Grille 3" << endl;
+    cout << "4 - Grille la plus difficile du monde" << endl;
 
     int choix;
     cin >> choix;
@@ -83,6 +98,7 @@ int main() {
     if (choix == 1) afficherGrille(grille1);
     else if (choix == 2) afficherGrille(grille2);
     else if (choix == 3) afficherGrille(grille3);
+    else if (choix == 4) afficherGrille(grille4);
     else cout << "Choix invalide." << endl;
 
     return 0;
