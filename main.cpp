@@ -6,6 +6,16 @@
 #include <iostream>
 using namespace std;
 
+class GrilleSudoku {
+    //Add solution générée ? 
+public:
+    string Name; string Niveau; //add content? 
+    GrilleSudoku() {
+        string aName=Name;
+        string aNiveau=Niveau;
+    }
+};
+
 int grille1[9][9] = {
     {5,3,0,0,7,0,0,0,0},
     {6,0,0,1,9,5,0,0,0},
