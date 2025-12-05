@@ -6,6 +6,15 @@ l’utilisateur pourra demander de l’aide et la machine lui placera une valeur
 correcte sur l’une des cases non d´ej`a occup´ees de la grille. L’affichage graphique
 pourra se faire `a travers une biblioth`eque graphique ou via la console.
 
+FAIT : 
+-> AFFICHAGE Grille 
+-> Grille prédéfinies 
 
 TO DO : 
-->
+-> Ajouter classe grille => Théophie
+-> Possibilité modifier la grille => Théophile
+-> Demander de l'aide => G and A 
+
+Problèmes rencontrés : 
+
+ 
