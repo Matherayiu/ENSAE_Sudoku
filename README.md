@@ -1,5 +1,4 @@
 Projet Sudoku – C++
-AlexIzydorczyk/sudoku
 
 Description du projet
 ---------------------
