@@ -123,7 +123,7 @@ bool verifier(int sol[9][9], int ligne, int colonne, int valeur) {
 }
 
 int main() {
-    cout << "=== Choisissez une grille de Sudoku ===" << endl;
+    cout << "=== Choisissez une grille de Sudoku en entrant le numéro correspondant ===" << endl;
     cout << "1 - Grille 1" << endl;
     cout << "2 - Grille 2" << endl;
     cout << "3 - Grille 3" << endl;
@@ -139,7 +139,7 @@ int main() {
     else if (choix == 2) { grille = grille2; solution = solution2; }
     else if (choix == 3) { grille = grille3; solution = solution3; }
     else if (choix == 4) { grille = grille4; solution = solution4; }
-    else { cout << "Choix invalide." << endl; return 0; }
+    else { cout << "Choix invalide. Fin du script" << endl; return 0; }
 
     cout << "\nVoici la grille choisie :\n";
     afficherGrille(grille);
@@ -147,7 +147,7 @@ int main() {
     // --- Saisie utilisateur case par case ---
     while (true) {
         int ligne, colonne, valeur;
-        cout << "Entrez ligne(1-9) colonne(1-9) valeur(1-9) ou 0 pour quitter: ";
+        cout << "Entrez ligne(1-9) colonne(1-9) valeur(1-9) ou 0 pour quitter. Veuillez taper chaque numéro puis appuyer sur Entrée : ";
         cin >> ligne;
         if (ligne == 0) break;
         cin >> colonne >> valeur;
