@@ -166,7 +166,7 @@ int main() {
     // --- Saisie utilisateur case par case ---
     while (true) {
         int ligne, colonne, valeur;
-        cout << "Entrez ligne(1-9) colonne(1-9) valeur(1-9) ou 0 pour quitter. Veuillez taper chaque numéro puis appuyer sur Entrée : ";
+        cout << "Entrez ligne(1-9) colonne(1-9) valeur(1-9) ou 0 pour quitter. Veuillez taper Entrée entre chaque numéro : ";
         cin >> ligne;
         if (ligne == 0) break;
         cin >> colonne >> valeur;
