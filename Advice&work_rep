@@ -9,9 +9,10 @@ pourra se faire `a travers une biblioth`eque graphique ou via la console.
 FAIT : 
 -> AFFICHAGE Grille 
 -> Grille prédéfinies 
+-> grilles corrigées
 
 TO DO : 
--> Ajouter classe grille et grilles corrigées => Théophie
+-> Ajouter classe grille  => Théophie
 -> Possibilité modifier la grille => Théophile
 -> Demander de l'aide => G and A
      -> vérifier que tout est bon 
