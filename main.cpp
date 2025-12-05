@@ -46,15 +46,28 @@ int grille3[9][9] = {
     {0,0,0, 0,0,0, 0,0,0}
 };
 
-// Afficher une grille dans la console :
 void afficherGrille(int g[9][9]) {
+    cout << " -----------------------" << endl;
     for (int i = 0; i < 9; i++) {
+
+        cout << "| ";
         for (int j = 0; j < 9; j++) {
-            cout << g[i][j] << " ";
+            if (g[i][j] == 0)
+                cout << ". ";
+            else
+                cout << g[i][j] << " ";
+
+            if ((j + 1) % 3 == 0) cout << "| ";
         }
+
         cout << endl;
+
+        // ligne horizontale tous les 3 blocs
+        if ((i + 1) % 3 == 0)
+            cout << " -----------------------" << endl;
     }
 }
+
 
 int main() {
     cout << "=== Choisissez une grille de Sudoku ===" << endl;
