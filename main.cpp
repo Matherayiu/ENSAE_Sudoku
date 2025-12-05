@@ -1,5 +1,7 @@
 //Ce que fait notre code : il affiche des grilles à l'utilisateur, il connait déjà les réponses aux 4 sudokus, l'utilisateur entre un chiffre
 // un par un et le code vérifie si c'est le bon chiffre. 
+// Pour rentrer un chiffre, le code demande le numéro de la ligne et le numéro de la colonne pour positionner la valeur puis on note la 
+// valeur : exemple j'écris : 1 3 8 : ligne 1 colonne 3 valeur 8. 
 
 #include <iostream>
 using namespace std;
