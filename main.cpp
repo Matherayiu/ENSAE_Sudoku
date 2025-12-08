@@ -112,76 +112,41 @@ int S4_correct[9][9] = {
     {2,4,6,8,5,7,1,3,4}
 };
 
-void afficherGrille(int g[9][9]) {
-    cout << "  ";
-    for (int i = 0; i < 9; i++) {
-        if (i==2 || i==5){
-            cout << " " << i+1<<"  ";
-        }
-        else {
-            cout << " " << i+1;
-        }
-    }
-    cout << endl; cout << " -----------------------" << endl;
-    for (int i = 0; i < 9; i++) {
-        cout << i+1 << "| ";
-        for (int j = 0; j < 9; j++) {
-            if (g[i][j] == 0)
-                cout << ". ";
-            else
-                cout << g[i][j] << " ";
-            if ((j + 1) % 3 == 0) cout << "| ";
-        }
-        cout << endl;
-        if ((i + 1) % 3 == 0) cout << " -----------------------" << endl;
-    }
-}
-
-bool verifier(int sol[9][9], int ligne, int colonne, int valeur) {
-    return sol[ligne][colonne] == valeur;
-}
-
 int main() {
-    cout << "=== Choisissez une grille de Sudoku en entrant le numéro correspondant ===" << endl;
-    cout << "1 - Grille 1" << endl;
-    cout << "2 - Grille 2" << endl;
-    cout << "3 - Grille 3" << endl;
-    cout << "4 - Grille la plus difficile du monde" << endl;
-
     int choix;
+
+    int (*grille)[9] = nullptr;
+    int (*solution)[9] = nullptr;
+
+    cout << "Choisissez une grille : 1, 2, 3 ou 4 : ";
     cin >> choix;
 
-    int (*grille)[9];
-    int (*solution)[9];
-
-    if (choix == 1) { grille = grille1; solution = solution1; }
-    else if (choix == 2) { grille = grille2; solution = solution2; }
-    else if (choix == 3) { grille = grille3; solution = solution3; }
-    else if (choix == 4) { grille = grille4; solution = solution4; }
-    else { cout << "Choix invalide. Fin du script" << endl; return 0; }
-
-    cout << "\nVoici la grille choisie :\n";
-    afficherGrille(grille);
-
-    
-    while (true) {
-        int ligne, colonne, valeur;
-        cout << "Entrez ligne(1-9) colonne(1-9) valeur(1-9) ou 0 pour quitter. Veuillez taper Entrée entre chaque numéro : ";
-        cin >> ligne;
-        if (ligne == 0) break;
-        cin >> colonne >> valeur;
-        ligne--; colonne--; // passage à l'index 0-8
-
-        if (verifier(solution, ligne, colonne, valeur)) {
-            cout << "Correct !" << endl;
-            grille[ligne][colonne] = valeur;
-        } else {
-            cout << "Incorrect !" << endl;
-        }
-
-        afficherGrille(grille);
+    if (choix == 1) { grille = G1; solution = S1_correct; }
+    else if (choix == 2) { grille = G2; solution = S2_correct; }
+    else if (choix == 3) { grille = G3; solution = S3_correct; }
+    else if (choix == 4) { grille = G4; solution = S4_correct; }
+    else {
+        cout << "Choix invalide. Fin du script\n";
+        return 0;
     }
 
-    cout << "Merci d'avoir joué !" << endl;
+    cout << "Grille sélectionnée :\n";
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++)
+            cout << grille[i][j] << " ";
+        cout << endl;
+    }
+
+    cout << "\nEntrez la position (ligne puis colonne) et le chiffre : ";
+    int ligne, colonne, chiffre;
+    cin >> ligne >> colonne >> chiffre;
+
+    ligne--; colonne--;
+
+    if (solution[ligne][colonne] == chiffre)
+        cout << "Correct !" << endl;
+    else
+        cout << "Incorrect." << endl;
+
     return 0;
 }
