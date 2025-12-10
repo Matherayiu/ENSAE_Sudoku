@@ -4,7 +4,7 @@
 // valeur : exemple j'écris : 1 3 8 : ligne 1 colonne 3 valeur 8. 
 
 #include <iostream>
-using namespace std;
+using namespace std; 
 
 // on affiche la grille
 void afficherGrille(int g[9][9]) {
