@@ -194,7 +194,8 @@ if (demande == 'o' || demande == 'O') {
     if (la < 0 || la > 8 || ca < 0 || ca > 8) {
         cout << "Coordonnées invalides.\n";
     } else {
-        cout << "La valeur correcte est : " << solution[la][ca] << "\n";
+        grille[la][ca] = solution[la][ca];
+        cout << "Valeur ajoutée par le solveur en vert : " << VERT << solution[la][ca] << RESET << "\n";
     }
 
     afficherGrille(grille, originale, solution);
