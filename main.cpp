@@ -158,6 +158,11 @@ int main() {
         }
 
         afficherGrille(grille);
+        
+char demande;
+cout << "Voulez-vous une aide ? (o/n) : ";
+cin >> demande;
+
     }
 
     return 0;
