@@ -153,8 +153,13 @@ int main() {
         return 0;
     }
 
+int originale[9][9];
+for (int i = 0; i < 9; i++)
+    for (int j = 0; j < 9; j++)
+        originale[i][j] = grille[i][j];
+
     cout << "\nGrille de départ :";
-    afficherGrille(grille);
+    afficherGrille(grille, originale, solution);
 
     while (true) {
         int l, c, n;
@@ -170,7 +175,7 @@ int main() {
             cout << "Incorrect.\n";
         }
 
-        afficherGrille(grille);
+        afficherGrille(grille, originale, solution);
         
 char demande;
 cout << "Voulez-vous une aide ? (o/n) : ";
@@ -192,7 +197,7 @@ if (demande == 'o' || demande == 'O') {
         cout << "La valeur correcte est : " << solution[la][ca] << "\n";
     }
 
-    afficherGrille(grille);
+    afficherGrille(grille, originale, solution);
     continue; 
 }
 
