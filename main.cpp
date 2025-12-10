@@ -7,20 +7,29 @@
 using namespace std; 
 
 // on affiche la grille
-void afficherGrille(int g[9][9]) {
-    cout << "\n+-------+-------+-------+\n";
+void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9]) {
+    cout << "\n┌───────┬───────┬───────┐\n";
     for (int i = 0; i < 9; i++) {
-        cout << "| ";
+        cout << "│ ";
         for (int j = 0; j < 9; j++) {
             if (g[i][j] == 0) cout << ". ";
-            else cout << g[i][j] << " ";
+            else {
+                if (originale[i][j] == 0 && g[i][j] == solution[i][j]) {
+                    cout << VERT << g[i][j] << RESET << " "; // solveur
+                } else if (originale[i][j] == 0) {
+                    cout << BLEU << g[i][j] << RESET << " "; // utilisateur
+                } else {
+                    cout << g[i][j] << " "; // chiffres de départ
+                }
+            }
 
-            if ((j + 1) % 3 == 0) cout << "| ";
+            if ((j + 1) % 3 == 0) cout << "│ ";
         }
         cout << "\n";
-        if ((i + 1) % 3 == 0)
-            cout << "+-------+-------+-------+\n";
+        if ((i + 1) % 3 == 0 && i != 8)
+            cout << "├───────┼───────┼───────┤\n";
     }
+    cout << "└───────┴───────┴───────┘\n";
 }
 
 
