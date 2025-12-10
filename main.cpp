@@ -163,6 +163,16 @@ char demande;
 cout << "Voulez-vous une aide ? (o/n) : ";
 cin >> demande;
 
+if (demande == 'o' || demande == 'O') {
+    int la, ca;
+    cout << "Entrez la ligne (1-9) : ";
+    cin >> la;
+    cout << "Entrez la colonne (1-9) : ";
+    cin >> ca;
+
+    la--; 
+    ca--;
+
     }
 
     return 0;
