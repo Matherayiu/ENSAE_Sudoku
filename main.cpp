@@ -6,6 +6,10 @@
 #include <iostream>
 using namespace std; 
 
+#define RESET "\033[0m"
+#define BLEU "\033[34m"   // couleur pour le chiffre correct donné par l'utilisateur 
+#define VERT "\033[32m"   // couleur pour le chiffre du solveur 
+
 // on affiche la grille
 void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9]) {
     cout << "\n┌───────┬───────┬───────┐\n";
@@ -130,10 +134,6 @@ int S4[9][9] = {
     {8,6,3,7,1,4,9,2,5},
     {7,5,1,2,9,8,3,0,4}
 };
-
-#define RESET "\033[0m"
-#define BLEU "\033[34m"   // couleur pour le chiffre correct donné par l'utilisateur 
-#define VERT "\033[32m"   // couleur pour le chiffre du solveur 
 
 int main() {
 
