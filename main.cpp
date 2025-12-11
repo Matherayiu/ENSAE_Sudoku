@@ -151,12 +151,14 @@ int main() {
     else {
         cout << "Choix invalide !";
         return 0;
-    }
+}
 
 int originale[9][9];
-for (int i = 0; i < 9; i++)
-    for (int j = 0; j < 9; j++)
+for (int i = 0; i < 9; i++) {
+    for (int j = 0; j < 9; j++) {
         originale[i][j] = grille[i][j];
+    }
+}
 
     cout << "\nGrille de départ :";
     afficherGrille(grille, originale, solution);
