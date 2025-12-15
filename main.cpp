@@ -185,13 +185,32 @@ int main()
 
     while (true)
     {
-        cout << "\nEntrez ligne (1-9), colonne (1-9) et chiffre (ou 'q' pour quitter) : ";
+        cout << "\nEntrez ligne (1-9), colonne (1-9) et chiffre (ou 'h' pour aide, 'q' pour quitter) : ";
         string first;
         if (!(cin >> first)) break; // EOF or error
 
         if (first == "q" || first == "Q") {
             cout << "Au revoir !\n";
             break;
+        }
+
+        if (first == "h" || first == "H") {
+            int la, ca;
+            cout << "Entrez la ligne (1-9) : ";
+            if (!(cin >> la)) break;
+            cout << "Entrez la colonne (1-9) : ";
+            if (!(cin >> ca)) break;
+
+            la--; ca--;
+            if (la < 0 || la > 8 || ca < 0 || ca > 8) {
+                cout << "Coordonnées invalides.\n";
+            } else {
+                s.provideHint(la, ca);
+                cout << "Valeur ajoutée par le solveur en vert : " << VERT << solution[la][ca] << RESET << "\n";
+            }
+
+            s.afficher();
+            continue;
         }
 
         int l, c, n;
