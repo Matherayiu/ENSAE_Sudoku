@@ -6,11 +6,11 @@ using namespace std;
 
 // ANSI Color codes
 #define RESET "\033[0m"
-#define BLEU "\033[34m"   // Color of user-entered numbers
-#define VERT "\033[32m"   // Color of solver-entered numbers
+#define BLEU "\033[34m"  
+#define VERT "\033[32m"  
 
-extern bool userMark[9][9];   // true if user entered value
-extern bool solverMark[9][9]; // true if solver put value here (hint)
+extern bool userMark[9][9];  
+extern bool solverMark[9][9]; 
 
 void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9]);
 
@@ -73,7 +73,7 @@ extern int G4[9][9];
 extern int S4[9][9];
 
 
-extern bool userMark[9][9];   // true if user entered value
-extern bool solverMark[9][9]; // true if solver put value here (hint)
+extern bool userMark[9][9];  
+extern bool solverMark[9][9]; 
 
 #endif
