@@ -4,11 +4,9 @@
 //  valeur : exemple j'écris : 1 3 8 : ligne 1 colonne 3 valeur 8.
 
 #include <iostream>
+#include <string>
+#include "header.h"
 using namespace std;
-
-#define RESET "\033[0m"
-#define BLEU "\033[34m" // couleur pour le chiffre correct donné par l'utilisateur
-#define VERT "\033[32m" // couleur pour le chiffre du solveur
 
 // on affiche la grille
 void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9])
@@ -25,11 +23,15 @@ void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9])
             {
                 if (originale[i][j] == 0 && g[i][j] == solution[i][j])
                 {
-                    cout << VERT << g[i][j] << RESET << " "; // solveur
+                    // color according to whom filled the cell (user or solver)
+                    if (solverMark[i][j]) cout << VERT << g[i][j] << RESET << " ";
+                    else if (userMark[i][j]) cout << BLEU << g[i][j] << RESET << " ";
+                    else cout << VERT << g[i][j] << RESET << " "; // fallback
                 }
                 else if (originale[i][j] == 0)
                 {
-                    cout << BLEU << g[i][j] << RESET << " "; // utilisateur
+                    if (userMark[i][j]) cout << BLEU << g[i][j] << RESET << " ";
+                    else cout << g[i][j] << " ";
                 }
                 else
                 {
@@ -135,7 +137,12 @@ int S4[9][9] = {
     {8, 6, 4, 7, 1, 5, 9, 2, 3},
     {3, 2, 1, 6, 8, 9, 7, 5, 4}};
 
+// mark arrays (define the externs declared in header.h)
+bool userMark[9][9] = {{false}};
+bool solverMark[9][9] = {{false}};
+
 int main()
+
 {
 
     int choix;
@@ -171,38 +178,45 @@ int main()
         return 0;
     }
 
-    int originale[9][9];
-    for (int i = 0; i < 9; i++)
-    {
-        for (int j = 0; j < 9; j++)
-        {
-            originale[i][j] = grille[i][j];
-        }
-    }
+    Sudoku s(grille, solution);
 
     cout << "\nGrille de départ :";
-    afficherGrille(grille, originale, solution);
+    s.afficher();
 
     while (true)
     {
+        cout << "\nEntrez ligne (1-9), colonne (1-9) et chiffre (ou 'q' pour quitter) : ";
+        string first;
+        if (!(cin >> first)) break; // EOF or error
+
+        if (first == "q" || first == "Q") {
+            cout << "Au revoir !\n";
+            break;
+        }
+
         int l, c, n;
-        cout << "\nEntrez ligne (1-9), colonne (1-9) et chiffre : ";
-        cin >> l >> c >> n;
+        try {
+            l = stoi(first);
+        } catch (...) {
+            cout << "Saisie invalide.\n";
+            continue;
+        }
+
+        if (!(cin >> c >> n)) break;
 
         l--;
         c--;
 
-        if (solution[l][c] == n)
+        if (s.checkAndSet(l, c, n))
         {
             cout << "Correct !\n";
-            grille[l][c] = n;
         }
         else
         {
             cout << "Incorrect.\n";
         }
 
-        afficherGrille(grille, originale, solution);
+        s.afficher();
 
         char demande;
         cout << "Voulez-vous une aide ? (o/n) : ";
@@ -225,11 +239,11 @@ int main()
             }
             else
             {
-                grille[la][ca] = solution[la][ca];
+                s.provideHint(la, ca);
                 cout << "Valeur ajoutée par le solveur en vert : " << VERT << solution[la][ca] << RESET << "\n";
             }
 
-            afficherGrille(grille, originale, solution);
+            s.afficher();
             continue;
         }
     }

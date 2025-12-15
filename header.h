@@ -6,15 +6,61 @@ using namespace std;
 
 // ANSI Color codes
 #define RESET "\033[0m"
-#define BLEU "\033[34m"   // User's correct input
-#define VERT "\033[32m"   // Solver's hints
+#define BLEU "\033[34m"   // Color of user-entered numbers
+#define VERT "\033[32m"   // Color of solver-entered numbers
 
-// Function declarations
+extern bool userMark[9][9];   // true if user entered value
+extern bool solverMark[9][9]; // true if solver put value here (hint)
+
 void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9]);
-void selectionnerGrille(int choix, int*& grille, int*& solution);
-bool verifierSaisie(int l, int c, int n, int solution[9][9]);
-void demanderAide(int grille[9][9], int originale[9][9], int solution[9][9]);
-bool estComplete(int g[9][9], int solution[9][9]);
+
+//
+class Sudoku {
+public:
+        //takes pointers to grid and solution
+	Sudoku(int g[9][9], int s[9][9]) {
+		grille = g; solution = s;
+		for (int i = 0; i < 9; ++i)
+			for (int j = 0; j < 9; ++j)
+				originale[i][j] = g[i][j];
+		// reset marks for a newly selected puzzle
+		for (int i = 0; i < 9; ++i)
+			for (int j = 0; j < 9; ++j) {
+				userMark[i][j] = false;
+				solverMark[i][j] = false;
+			}
+	}
+
+	// display wrapper
+	void afficher() const { afficherGrille(grille, const_cast<int(*)[9]>(originale), solution); }
+
+	// check value against solution ; 
+	bool checkAndSet(int l, int c, int n) {
+		if (l < 0 || l > 8 || c < 0 || c > 8) return false;
+		if (originale[l][c] != 0) return false; // can't overwrite fixed cell
+		if (solution[l][c] == n) { grille[l][c] = n; userMark[l][c] = true; solverMark[l][c] = false; return true; }
+		return false;
+	}
+
+	// hint : ask line and column to fill the case
+	bool provideHint(int l, int c) {
+		if (l < 0 || l > 8 || c < 0 || c > 8) return false;
+		grille[l][c] = solution[l][c];
+		solverMark[l][c] = true;
+		userMark[l][c] = false;
+		return true;
+	}
+
+	
+	bool isFixed(int l, int c) const {
+		return originale[l][c] != 0;
+	}
+
+private:
+	int (*grille)[9];
+	int (*solution)[9];
+	int originale[9][9];
+};
 
 // Sudoku grids and solutions
 extern int G1[9][9];
@@ -25,5 +71,9 @@ extern int G3[9][9];
 extern int S3[9][9];
 extern int G4[9][9];
 extern int S4[9][9];
+
+
+extern bool userMark[9][9];   // true if user entered value
+extern bool solverMark[9][9]; // true if solver put value here (hint)
 
 #endif
