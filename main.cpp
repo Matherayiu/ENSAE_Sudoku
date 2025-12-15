@@ -22,7 +22,6 @@ void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9])
             {
                 if (originale[i][j] == 0 && g[i][j] == solution[i][j])
                 {
-                    // color according to whom filled the cell (user or solver)
                     if (solverMark[i][j]) cout << VERT << g[i][j] << RESET << " ";
                     else if (userMark[i][j]) cout << BLEU << g[i][j] << RESET << " ";
                     else cout << VERT << g[i][j] << RESET << " "; // fallback
