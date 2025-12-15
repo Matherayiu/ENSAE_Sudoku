@@ -17,7 +17,7 @@ void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9]);
 //
 class Sudoku {
 public:
-        //takes pointers to grid and solution
+        
 	Sudoku(int g[9][9], int s[9][9]) {
 		grille = g; solution = s;
 		for (int i = 0; i < 9; ++i)
