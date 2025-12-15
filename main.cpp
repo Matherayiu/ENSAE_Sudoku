@@ -8,7 +8,6 @@
 #include "header.h"
 using namespace std;
 
-// on affiche la grille
 void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9])
 {
     cout << "\n┌───────┬───────┬───────┐\n";
