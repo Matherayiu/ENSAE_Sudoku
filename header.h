@@ -29,7 +29,9 @@ public:
 	}
 
 	
-	void afficher() const { afficherGrille(grille, const_cast<int(*)[9]>(originale), solution); }
+	void afficher() {
+    afficherGrille(grille, originale, solution);
+}
 
 	bool checkAndSet(int l, int c, int n) {
 		if (l < 0 || l > 8 || c < 0 || c > 8) return false;
