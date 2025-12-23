@@ -40,6 +40,7 @@ public:
 
 	bool provideHint(int l, int c) {
 		if (l < 0 || l > 8 || c < 0 || c > 8) return false;
+		if (originale[l][c] != 0) return false;
 		grille[l][c] = solution[l][c];
 		solverMark[l][c] = true;
 		userMark[l][c] = false;
