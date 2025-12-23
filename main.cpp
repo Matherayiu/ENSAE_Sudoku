@@ -24,7 +24,7 @@ void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9])
                 {
                     if (solverMark[i][j]) cout << VERT << g[i][j] << RESET << " ";
                     else if (userMark[i][j]) cout << BLEU << g[i][j] << RESET << " ";
-                    else cout << VERT << g[i][j] << RESET << " "; // fallback
+                    else cout << VERT << g[i][j] << RESET << " "; 
                 }
                 else if (originale[i][j] == 0)
                 {
@@ -33,7 +33,7 @@ void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9])
                 }
                 else
                 {
-                    cout << g[i][j] << " "; // chiffres de départ
+                    cout << g[i][j] << " "; 
                 }
             }
 
