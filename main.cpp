@@ -135,7 +135,6 @@ int S4[9][9] = {
     {8, 6, 4, 7, 1, 5, 9, 2, 3},
     {3, 2, 1, 6, 8, 9, 7, 5, 4}};
 
-// mark arrays (define the externs declared in header.h)
 bool userMark[9][9] = {{false}};
 bool solverMark[9][9] = {{false}};
 
@@ -185,15 +184,14 @@ int main()
     {
         cout << "\nEntrez ligne (1-9), colonne (1-9) et chiffre (ou 'h' pour aide, 'q' pour quitter) : ";
         string first;
-        if (!(cin >> first)) break; // EOF or error -> use to stop 
+        if (!(cin >> first)) break;
 
-        //User wants to quit
         if (first == "q" || first == "Q") {
             cout << "Au revoir !\n";
             break;
         }
 
-        //User wants help
+        // Si l'utilisateur veut de l'aide : solveur 
         if (first == "h" || first == "H") {
             int l_help, c_help;
             cout << "Entrez la ligne (1-9) : ";
@@ -202,7 +200,6 @@ int main()
             if (!(cin >> c_help)) break;
 
             l_help--; c_help--;
-            //Verify valid coordinates before giving solution
             if (l_help < 0 || l_help > 8 || c_help < 0 || c_help > 8) {
                 cout << "Coordonnées invalides.\n";
             } else {
