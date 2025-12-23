@@ -35,8 +35,12 @@ public:
 
 	bool checkAndSet(int l, int c, int n) {
 		if (l < 0 || l > 8 || c < 0 || c > 8) return false;
-		if (originale[l][c] != 0) return false; // can't overwrite fixed cell
-		if (solution[l][c] == n) { grille[l][c] = n; userMark[l][c] = true; solverMark[l][c] = false; return true; }
+		if (originale[l][c] != 0) return false; 
+		if (solution[l][c] == n) { grille[l][c] = n; 
+			userMark[l][c] = true; 
+			solverMark[l][c] = false; 
+			return true; 
+		}
 		return false;
 	}
 
@@ -49,6 +53,13 @@ public:
 		return true;
 	}
 
+    bool estComplete() const {
+        for (int i = 0; i < 9; i++)
+            for (int j = 0; j < 9; j++)
+                if (grille[i][j] != solution[i][j])
+                    return false;
+        return true;
+    }
 	
 	bool isFixed(int l, int c) const {
 		return originale[l][c] != 0;
