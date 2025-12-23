@@ -141,6 +141,7 @@ bool solverMark[9][9] = {{false}};
 int main()
 
 {
+    bool gagne = false; 
 
     int choix;
     cout << "Choisissez une grille (1 à 4) : ";
@@ -235,6 +236,11 @@ int main()
 
         s.afficher();
 
+        if (s.estComplete()) {
+            gagne = true;
+            break; 
+        }
+
         char demande;
         cout << "Voulez-vous une aide ? (o/n) : ";
         cin >> demande;
@@ -261,9 +267,15 @@ int main()
             }
 
             s.afficher();
+            if (s.estComplete()) {
+                gagne = true;
+                break;
+            }
             continue;
         }
     }
-
+    if (gagne) {
+    cout << "\n Bravo, sudoku terminé !\n";
+}
     return 0;
 }
