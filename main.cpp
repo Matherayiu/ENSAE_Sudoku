@@ -16,20 +16,14 @@ void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9])
         cout << "│ ";
         for (int j = 0; j < 9; j++)
         {
-            if (g[i][j] == 0)
+            if (g[i][j] == 0) // les cases vides sont remplies par un point
                 cout << ". ";
             else
             {
-                if (originale[i][j] == 0 && g[i][j] == solution[i][j])
+                if (originale[i][j] == 0 && g[i][j] == solution[i][j])  //Quand une valeur correcte est ajoutée...
                 {
-                    if (solverMark[i][j]) cout << VERT << g[i][j] << RESET << " ";
-                    else if (userMark[i][j]) cout << BLEU << g[i][j] << RESET << " ";
-                    else cout << VERT << g[i][j] << RESET << " "; 
-                }
-                else if (originale[i][j] == 0)
-                {
-                    if (userMark[i][j]) cout << BLEU << g[i][j] << RESET << " ";
-                    else cout << g[i][j] << " ";
+                    if (solverMark[i][j]) cout << VERT << g[i][j] << RESET << " ";  //..par le solveur, le nombre est affiché en vert
+                    else if (userMark[i][j]) cout << BLEU << g[i][j] << RESET << " "; //.....par l'utilisateur, le nombre est affiché en bleu
                 }
                 else
                 {
