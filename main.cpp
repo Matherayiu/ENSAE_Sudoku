@@ -16,7 +16,7 @@ void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9])
         cout << "│ ";
         for (int j = 0; j < 9; j++)
         {
-            if (g[i][j] == 0) // les cases vides sont remplies par un point
+            if (g[i][j] == 0) // les cases vides sont remplies par des points
                 cout << ". ";
             else
             {
@@ -31,7 +31,7 @@ void afficherGrille(int g[9][9], int originale[9][9], int solution[9][9])
                 }
             }
 
-            if ((j + 1) % 3 == 0) //Ajoute les barres de séparation verticales toutes les trois valeurs
+            if ((j + 1) % 3 == 0) //Ajoute les barres de séparation verticales toutes les trois valeurs 
                 cout << "│ ";
         }
         cout << "\n";
