@@ -6,52 +6,59 @@
 #include <iostream>
 #include <sstream>
 #include "header.h"
-using namespace std; 
+using namespace std;
 
-Sudoku::Sudoku(int g[9][9], int s[9][9]) {
+Sudoku::Sudoku(int g[9][9], int s[9][9])
+{
     grille = g;
     solution = s;
 
     for (int i = 0; i < 9; i++)
-        for (int j = 0; j < 9; j++) {
+        for (int j = 0; j < 9; j++)
+        {
             originale[i][j] = g[i][j];
             userMark[i][j] = false;
             solverMark[i][j] = false;
         }
 }
 
-void Sudoku::afficher() const {
+void Sudoku::afficher() const
+{
     afficherGrille(grille, originale, solution, userMark, solverMark);
 }
 
-bool Sudoku::checkAndSet(int line, int column, int number) { //Dit si la combinaison est correcte, et met à jour la grille en conséquence
-    if (line < 0 || line > 8 || column < 0 || column > 8) //Vérifie la validité des coordonnées
+bool Sudoku::checkAndSet(int line, int column, int number)
+{                                                         // Dit si la combinaison est correcte, et met à jour la grille en conséquence
+    if (line < 0 || line > 8 || column < 0 || column > 8) // Vérifie la validité des coordonnées
         return false;
-    if (originale[line][column] != 0) //Vérifie que la case n'est pas déjà remplie dans la grille originale
+    if (originale[line][column] != 0) // Vérifie que la case n'est pas déjà remplie dans la grille originale
         return false;
 
-    if (solution[line][column] == number) { //Vérifite si la valeur est correcte
+    if (solution[line][column] == number)
+    { // Vérifite si la valeur est correcte
         grille[line][column] = number;
         userMark[line][column] = true;
         solverMark[line][column] = false;
-        return true; //la valeur est correcte, et sera affichée en bleu
+        return true; // la valeur est correcte, et sera affichée en bleu
     }
     return false;
 }
 
-bool Sudoku::provideHint(int line, int column) {
-    if (line < 0 || line > 8 || column < 0 || column > 8) //Vérifie la validité des coordonnées
+bool Sudoku::provideHint(int line, int column)
+{
+    if (line < 0 || line > 8 || column < 0 || column > 8) // Vérifie la validité des coordonnées
         return false;
-    if (originale[line][column] != 0) //Vérifie que la case n'est pas déjà remplie dans la grille originale
+    if (originale[line][column] != 0) // Vérifie que la case n'est pas déjà remplie dans la grille originale
         return false;
 
     grille[line][column] = solution[line][column];
     solverMark[line][column] = true;
     userMark[line][column] = false;
-    return true; //la valeur est ajoutée par le solveur, et sera affichée en vert
+    return true; // la valeur est ajoutée par le solveur, et sera affichée en vert
 }
 
-bool Sudoku::estComplete() const { //Vérifie si la grille est complète
+bool Sudoku::estComplete() const
+{ // Vérifie si la grille est complète
     for (int i = 0; i < 9; i++)
         for (int j = 0; j < 9; j++)
             if (grille[i][j] != solution[i][j])
@@ -64,29 +71,35 @@ void afficherGrille(
     const int originale[9][9],
     const int solution[9][9],
     const bool userMark[9][9],
-    const bool solverMark[9][9]
-);
+    const bool solverMark[9][9]);
 
 void afficherGrille(
     const int g[9][9],
     const int originale[9][9],
     const int solution[9][9],
     const bool userMark[9][9],
-    const bool solverMark[9][9]
-) {
-    cout << "\n┌───────┬───────┬───────┐\n"; //le haut de la grille
+    const bool solverMark[9][9])
+{
+    cout << "\n┌───────┬───────┬───────┐\n"; // le haut de la grille
 
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 9; i++)
+    {
         cout << "│ ";
-        for (int j = 0; j < 9; j++) {
-            if (g[i][j] == 0) { // les cases vides sont remplies par un point
+        for (int j = 0; j < 9; j++)
+        {
+            if (g[i][j] == 0)
+            { // les cases vides sont remplies par un point
                 cout << ". ";
-            } else if (originale[i][j] == 0 && g[i][j] == solution[i][j]) { //Quand une valeur correcte est ajoutée...
+            }
+            else if (originale[i][j] == 0 && g[i][j] == solution[i][j])
+            { // Quand une valeur correcte est ajoutée...
                 if (solverMark[i][j])
                     cout << VERT << g[i][j] << RESET << " "; //..par le solveur, le nombre est affiché en vert
                 else if (userMark[i][j])
                     cout << BLEU << g[i][j] << RESET << " "; //.....par l'utilisateur, le nombre est affiché en bleu
-            } else {
+            }
+            else
+            {
                 cout << g[i][j] << " ";
             }
 
@@ -94,10 +107,10 @@ void afficherGrille(
                 cout << "│ ";
         }
         cout << "\n";
-        if ((i + 1) % 3 == 0 && i != 8) //Ajoute les barres de séparation verticales toutes les trois valeurs
+        if ((i + 1) % 3 == 0 && i != 8) // Ajoute les barres de séparation verticales toutes les trois valeurs
             cout << "├───────┼───────┼───────┤\n";
     }
-    cout << "└───────┴───────┴───────┘\n"; //affiche le bas de la grille
+    cout << "└───────┴───────┴───────┘\n"; // affiche le bas de la grille
 }
 
 int G1[9][9] = {
@@ -188,61 +201,68 @@ int S4[9][9] = {
     {8, 6, 4, 7, 1, 5, 9, 2, 3},
     {3, 2, 1, 6, 8, 9, 7, 5, 4}};
 
-int main() {
+int main()
+{
     int choix;
     cout << "Choisissez une grille (1 à 4) : ";
     cin >> choix;
 
-    int (*grille_array[4])[9] = { G1, G2, G3, G4 };  //Tableaux de pointeurs vers les grilles
-    int (*solution_array[4])[9] = { S1, S2, S3, S4 };
+    int (*grille_array[4])[9] = {G1, G2, G3, G4}; // Tableaux de pointeurs vers les grilles
+    int (*solution_array[4])[9] = {S1, S2, S3, S4};
 
-    if (choix < 1 || choix > 4) {
+    if (choix < 1 || choix > 4)
+    {
         cout << "Choix invalide.\n";
         return 0;
     }
 
-    Sudoku s(grille_array[choix - 1], solution_array[choix - 1]); //Affectation de la grille chosie
-    cout << "\nGrille de départ :";   
+    Sudoku s(grille_array[choix - 1], solution_array[choix - 1]); // Affectation de la grille chosie
+    cout << "\nGrille de départ :";
     s.afficher();
 
     cin.ignore(); // Ignore le caractère de nouvelle ligne restant après l'entrée précédente. Essentiel pour que "MERCI D'ENTRER..." ne soit affiché qu'une fois.
 
-    while (true) { //Boucle principale du jeu
+    while (true)
+    { // Boucle principale du jeu
         cout << "\nMERCI D'ENTRER TOUTE COMBINAISON AVEC DES ESPACES. Pour jouer, entrez ligne (1-9), colonne (1-9) et chiffre. Pour de l'aide, appuyez sur 'a' puis entrez la ligne et la colonne de la case que vous souhaitez remplir. Appuyez sur 'q' pour quitter) :  ";
-        string command; //combinaison entrée par l'utiisateur
+        string command; // combinaison entrée par l'utiisateur
         getline(cin, command);
 
-        if (command == "q" || command == "Q") { //Arrête le jeu
+        if (command == "q" || command == "Q")
+        { // Arrête le jeu
             cout << "Au revoir !\n";
             break;
         }
 
-        if (command[0] == 'a' || command[0] == 'A') { // Si l'utilisateur veut de l'aide : solveur 
+        if (command[0] == 'a' || command[0] == 'A')
+        { // Si l'utilisateur veut de l'aide : solveur
             int line_help, column_help;
-            stringstream command_help(command.substr(1)); //Create a stream after the charatecter 'a'
-            command_help >> line_help >> column_help; // and affects the first character to line_help and the second to column_help
-            s.provideHint(line_help - 1, column_help - 1); //Fournit l'aide en prenant en compte le décalage de 1
+            stringstream command_help(command.substr(1));  // Create a stream after the charatecter 'a'
+            command_help >> line_help >> column_help;      // and affects the first character to line_help and the second to column_help
+            s.provideHint(line_help - 1, column_help - 1); // Fournit l'aide en prenant en compte le décalage de 1
             s.afficher();
             continue;
         }
 
         int line, column, value;
         stringstream command_stream(command);
-        if (!(command_stream >> line >> column >> value)) { //Affecte la combinaison entrée par l'utilisateur. Si problème, affiche un message d'erreur
+        if (!(command_stream >> line >> column >> value))
+        { // Affecte la combinaison entrée par l'utilisateur. Si problème, affiche un message d'erreur
             cout << "Commande invalide.\n";
             continue;
         }
 
-        if (s.checkAndSet(line - 1, column - 1, value)) //Vérifie et met à jour la grille en conséquence
+        if (s.checkAndSet(line - 1, column - 1, value)) // Vérifie et met à jour la grille en conséquence
             cout << "Correct !\n";
         else
             cout << "Incorrect.\n";
 
         s.afficher();
 
-        if (s.estComplete()) { //Si la grille est complète, met fin au jeu
+        if (s.estComplete())
+        { // Si la grille est complète, met fin au jeu
             cout << "\nBravo, sudoku terminé !\n";
-            break; //Permet de sortir de la boucle while  
+            break; // Permet de sortir de la boucle while
         }
     }
     return 0;
