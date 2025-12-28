@@ -68,12 +68,7 @@ bool Sudoku::estComplete() const
     return true;
 }
 
-void afficherGrille(
-    const int g[9][9],
-    const int originale[9][9],
-    const int solution[9][9],
-    const bool userMark[9][9],
-    const bool solverMark[9][9]);
+
 
 void afficherGrille(
     const int g[9][9],
