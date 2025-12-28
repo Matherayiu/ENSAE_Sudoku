@@ -1,7 +1,9 @@
-// Ce que fait notre code : il affiche des grilles à l'utilisateur, il connait déjà les réponses aux 4 sudokus, l'utilisateur entre un chiffre
-//  un par un et le code vérifie si c'est le bon chiffre.
+// Ce que fait notre code : il affiche des grilles à l'utilisateur, il connait déjà les réponses aux 4 sudokus, l'utilisateur entre une combinaison
+//  et le code vérifie si c'est le bon chiffre.
 //  Pour rentrer un chiffre, le code demande le numéro de la ligne et le numéro de la colonne pour positionner la valeur puis on note la
 //  valeur : exemple j'écris : 1 3 8 : ligne 1 colonne 3 valeur 8.
+// Pour demander de l'aide, il suffit de cliquer sur 'a' puis de rentrer les coordonnées de la case (ligne colonne)
+// exemple : a 2 3 ligne 2 colonne 3
 
 #include <iostream>
 #include <sstream>
