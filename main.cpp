@@ -232,9 +232,9 @@ int main()
         if (command[0] == 'a' || command[0] == 'A')
         { // Si l'utilisateur veut de l'aide : solveur
             int line_help, column_help;
-            stringstream command_help(command.substr(1));  // Create a stream after the charatecter 'a'
-            command_help >> line_help >> column_help;      // and affects the first character to line_help and the second to column_help
-            s.provideHint(line_help - 1, column_help - 1); // Fournit l'aide en prenant en compte le décalage de 1
+                stringstream command_help(command.substr(1));  // extrait la partie de la commande après le 'a' ou 'A'
+            command_help >> line_help >> column_help;      // affecte les coordonnées entrées par l'utilisateur
+            s.provideHint(line_help - 1, column_help - 1); // fournit l'aide en prenant en compte le décalage de 1
             s.afficher();
             continue;
         }
@@ -242,7 +242,7 @@ int main()
         int line, column, value;
         stringstream command_stream(command);
         if (!(command_stream >> line >> column >> value))
-        { // Affecte la combinaison entrée par l'utilisateur. Si problème, affiche un message d'erreur
+        { // affecte la combinaison entrée par l'utilisateur. Si problème, affiche un message d'erreur
             cout << "Commande invalide.\n";
             continue;
         }
