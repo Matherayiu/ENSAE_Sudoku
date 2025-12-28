@@ -24,11 +24,6 @@ Sudoku::Sudoku(int g[9][9], int s[9][9])
         }
 }
 
-void Sudoku::afficher() const
-{
-    afficherGrille(grille, originale, solution, userMark, solverMark);
-}
-
 bool Sudoku::checkAndSet(int line, int column, int number)
 {                                                         // Dit si la combinaison est correcte, et met à jour la grille en conséquence
     if (line < 0 || line > 8 || column < 0 || column > 8) // Vérifie la validité des coordonnées
@@ -68,8 +63,6 @@ bool Sudoku::estComplete() const
     return true;
 }
 
-
-
 void afficherGrille(
     const int g[9][9],
     const int originale[9][9],
@@ -108,6 +101,11 @@ void afficherGrille(
             cout << "├───────┼───────┼───────┤\n";
     }
     cout << "└───────┴───────┴───────┘\n"; // affiche le bas de la grille
+}
+
+void Sudoku::afficher() const
+{
+    afficherGrille(grille, originale, solution, userMark, solverMark);
 }
 
 int G1[9][9] = {
